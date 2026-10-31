@@ -1,0 +1,15 @@
+Исходники/
+intl_kk_fixed.arb
+corrections.csv
+corrections.xlsx
+glossary.csv
+reports/
+outputs/
+.artifact_runtime/
+__pycache__/
+.pytest_cache/
+*.pyc
+private/
+.local_models/
+.venv/
+.local_flutter/
