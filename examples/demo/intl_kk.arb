@@ -1,0 +1,20 @@
+{
+  "@@locale": "kk",
+  "@@comment": "Synthetic public demo with intentional defects; not gold translations",
+  "demoGreeting": "Сәлем, pilot!",
+  "@demoGreeting": {"description": "Greeting in a fictional training app", "placeholders": {"pilot": {"type": "String"}}},
+  "demoWelcome": "Добро пожаловать на тренировочный сервер",
+  "demoCount": "Айналым: {count, plural, one{# айналым}}",
+  "@demoCount": {"placeholders": {"count": {"type": "int"}}},
+  "demoGift": "{pilot}-ға сыйлық жіберу",
+  "demoMenuButton": "Ойын әлемінің толық картасын ашу",
+  "demoNews": "Open the training log",
+  "demoConfirm": "Рaстау",
+  "demoAwkward": "Жаттығу үшін басу жасаңыз",
+  "demoToken": "Оқу белгісі",
+  "@@comment": "Third exit label intentionally differs from its siblings",
+  "demoExitOne": "Шығу",
+  "demoExitTwo": "Шығу",
+  "demoExitThree": "Ойыннан шығу үшін осы жерді таңдаңыз",
+  "demoBrand": "OrbitLab"
+}

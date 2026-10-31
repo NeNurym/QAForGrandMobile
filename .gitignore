@@ -13,3 +13,12 @@ private/
 .local_models/
 .venv/
 .local_flutter/
+input/*
+!input/README.txt
+result/
+.playwright-mcp/
+release/
+
+# Public examples are synthetic; root case artifacts stay private.
+!examples/demo/glossary.csv
+!examples/demo/corrections.csv

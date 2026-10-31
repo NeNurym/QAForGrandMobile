@@ -1,0 +1,3 @@
+# Synthetic trigger for demonstrating a configurable phrase list.
+# This is not a language model or a general Kazakh grammar resource.
+басу жасаңыз

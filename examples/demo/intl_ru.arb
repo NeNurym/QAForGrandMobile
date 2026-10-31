@@ -1,0 +1,21 @@
+{
+  "@@locale": "ru",
+  "@@comment": "Synthetic public demo: training interface, not organizer data",
+  "demoGreeting": "Привет, {pilot}!",
+  "@demoGreeting": {"description": "Greeting in a fictional training app", "placeholders": {"pilot": {"type": "String"}}},
+  "demoWelcome": "Добро пожаловать на тренировочный сервер",
+  "demoMissing": "Начать тренировку",
+  "demoCount": "Круги: {count, plural, one{# круг} other{# кругов}}",
+  "@demoCount": {"placeholders": {"count": {"type": "int"}}},
+  "demoGift": "Отправить подарок {pilot}",
+  "demoMenuButton": "Карта",
+  "demoNews": "Открыть учебный журнал",
+  "demoConfirm": "Подтвердить",
+  "demoAwkward": "Нажмите для тренировки",
+  "demoToken": "Учебный жетон",
+  "@@comment": "Repeated source labels with an intentionally inconsistent target",
+  "demoExitOne": "Выход",
+  "demoExitTwo": "Выход",
+  "demoExitThree": "Выход",
+  "demoBrand": "OrbitLab"
+}

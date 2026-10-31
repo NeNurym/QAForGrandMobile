@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Qazaq Loc QA — игровой казахский под контролем</title>
+  <desc id="desc">Контроль локализации: найти, объяснить, предложить, проверить. Справа вымышленный пример потерянного плейсхолдера.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#B8D5C3" stroke-opacity=".045"/></pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="520" gradientUnits="userSpaceOnUse"><stop stop-color="#101B18"/><stop offset="1" stop-color="#172721"/></linearGradient>
+    <linearGradient id="line" x1="707" y1="134" x2="1280" y2="482" gradientUnits="userSpaceOnUse"><stop stop-color="#C3F27B" stop-opacity=".02"/><stop offset="1" stop-color="#C3F27B" stop-opacity=".25"/></linearGradient>
+  </defs>
+  <rect width="1280" height="520" rx="20" fill="url(#bg)"/>
+  <rect width="1280" height="520" rx="20" fill="url(#grid)"/>
+  <path d="M690 520C690 386 827 439 827 326S1038 265 1038 134 1178 20 1280 20M740 520C740 410 877 463 877 350S1088 289 1088 158 1228 44 1280 44M790 520C790 434 927 487 927 374S1138 313 1138 182 1248 68 1280 68" stroke="url(#line)"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="64" y="48" width="8" height="8" rx="2" fill="#C3F27B"/>
+    <text x="84" y="58" font-size="13" letter-spacing="2" fill="#B3C6BA">DECENTRATHON 6.0 / CASE 02</text>
+    <text x="64" y="190" font-size="104" font-weight="750" letter-spacing="-5" fill="#F4F6EE">Qazaq</text>
+    <text x="64" y="292" font-size="104" font-weight="750" letter-spacing="-5" fill="#C3F27B">Loc QA<tspan fill="#F4F6EE">.</tspan></text>
+    <text x="68" y="350" font-size="27" font-weight="500" fill="#E8EEE7">Игровой казахский. Под контролем.</text>
+    <text x="68" y="385" font-size="16" fill="#A2B7AA">Смысл, термины и структура — в одной очереди решений.</text>
+    <path d="M68 429H666" stroke="#506458" stroke-opacity=".5"/>
+    <text x="68" y="463" font-size="15" fill="#D4DFD4">Найти <tspan fill="#819B85"> / </tspan> Объяснить <tspan fill="#819B85"> / </tspan> Предложить <tspan fill="#819B85"> / </tspan> Проверить</text>
+    <rect x="760" y="113" width="456" height="300" rx="15" fill="#1A2A23" stroke="#405346"/>
+    <path d="M760 166H1216" stroke="#405346"/>
+    <circle cx="786" cy="140" r="4" fill="#C3F27B"/>
+    <text x="801" y="145" font-size="13" fill="#D1DFD2">demoGreeting</text>
+    <text x="1120" y="145" font-size="12" fill="#8CA793">ru → kk</text>
+    <text x="786" y="196" font-size="10" letter-spacing="1.8" fill="#8CA793">ОРИГИНАЛ</text>
+    <text x="786" y="228" font-size="23" fill="#EDF2E8">Привет, <tspan fill="#C3F27B">{pilot}</tspan>!</text>
+    <text x="786" y="271" font-size="10" letter-spacing="1.8" fill="#8CA793">ПЕРЕВОД</text>
+    <text x="786" y="303" font-size="23" fill="#EDF2E8">Сәлем, <tspan fill="#F6B783">pilot</tspan>!</text>
+    <path d="M866 314H913" stroke="#F6B783" stroke-width="2" stroke-linecap="round"/>
+    <rect x="786" y="339" width="252" height="28" rx="6" fill="#382D23"/>
+    <text x="799" y="358" font-family="Consolas, monospace" font-size="13" fill="#F6B783">placeholder_mismatch</text>
+    <text x="786" y="390" font-size="12" fill="#AFC3B4">Причина: переменная потеряла фигурные скобки.</text>
+    <text x="762" y="444" font-size="11" letter-spacing="1" fill="#8CA793">ВЫМЫШЛЕННЫЙ ПРИМЕР · PUBLIC DEMO</text>
+    <text x="1189" y="484" text-anchor="end" font-size="11" letter-spacing="1.5" fill="#75947D">RU / KK / ARB</text>
+  </g>
+</svg>

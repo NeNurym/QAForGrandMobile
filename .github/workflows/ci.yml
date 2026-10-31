@@ -1,0 +1,32 @@
+name: Tests and public demo
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Python ${{ matrix.python-version }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.14']
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Generate report from synthetic public data
+        run: python locqa.py check --source examples/demo/intl_ru.arb --target examples/demo/intl_kk.arb --glossary examples/demo/glossary.csv --suspect-phrases examples/demo/suspect_kk.txt --out reports/demo.json
+      - name: Verify public demo contract
+        run: python examples/demo/verify.py

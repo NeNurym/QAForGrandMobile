@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import html
 import json
 import re
 import shutil
@@ -340,17 +339,13 @@ def check(source: dict[str, object], target: dict[str, object], glossary: list[d
     return findings
 
 
-def render_html(findings: list[dict], path: Path) -> None:
-    rows = []
-    for f in findings:
-        cells = [f[k] for k in ("key", "issue_type", "severity", "source", "target", "evidence", "suggestion", "confidence", "reviewed_by_human")]
-        rows.append("<tr>" + "".join(f"<td>{html.escape(str(v))}</td>" for v in cells) + "</tr>")
-    doc = """<!doctype html><html lang="ru"><meta charset="utf-8"><title>Loc QA</title>
-<style>body{font:14px system-ui;margin:2rem;color:#18212b}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd4dc;padding:.45rem;vertical-align:top;white-space:pre-wrap}th{background:#e9f0f6;position:sticky;top:0}tr:nth-child(even){background:#f8fafc}input{padding:.5rem;width:20rem}</style>
-<h1>Отчёт Loc QA</h1><p>Находок: COUNT. Автоматические находки требуют проверки человеком.</p>
-<label>Фильтр <input id="q" oninput="for(const r of document.querySelectorAll('tbody tr'))r.hidden=!r.textContent.toLowerCase().includes(this.value.toLowerCase())"></label>
-<table><thead><tr><th>Ключ</th><th>Тип</th><th>Важность</th><th>Русский</th><th>Казахский</th><th>Основание</th><th>Предложение</th><th>Уверенность</th><th>Проверено человеком</th></tr></thead><tbody>ROWS</tbody></table></html>"""
-    path.write_text(doc.replace("COUNT", str(len(findings))).replace("ROWS", "\n".join(rows)), encoding="utf-8")
+def render_html(findings: list[dict], path: Path, source: dict | None = None,
+                target: dict | None = None, baseline: dict | None = None,
+                proposals: dict | None = None, reviewed_keys: set | None = None) -> None:
+    from report_ui import render_report
+
+    render_report(findings, path, source=source, target=target,
+                  baseline=baseline, proposals=proposals, reviewed_keys=reviewed_keys)
 
 
 def apply_corrections(input_path: Path, corrections_path: Path, output_path: Path, source_path: Path | None = None, only_reviewed: bool = False) -> tuple[int, int]:
@@ -474,6 +469,7 @@ def main() -> None:
     check_cmd.add_argument("--glossary", type=Path)
     check_cmd.add_argument("--suspect-phrases", type=Path, help="Private UTF-8 text file with one suspicious phrase per line")
     check_cmd.add_argument("--html", type=Path)
+    check_cmd.add_argument("--baseline", type=Path, help="Original translation for before/after comparison in HTML")
     check_cmd.add_argument("--sensitive", action="store_true", help="Include low-confidence exact Russian matches")
     fix_cmd = commands.add_parser("apply", help="Apply reviewed translations without reformatting ARB")
     for flag in ("target", "corrections", "out"):
@@ -499,7 +495,9 @@ def main() -> None:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(json.dumps(findings, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         html_path = args.html or args.out.with_suffix(".html")
-        render_html(findings, html_path)
+        baseline = read_arb(args.baseline)[2] if args.baseline else None
+        render_html(findings, html_path, source=source, target=target, baseline=baseline,
+                    reviewed_keys=human_reviewed_keys(target_entries))
         counts = Counter(f["issue_type"] for f in findings)
         print(f"{len(findings)} findings: " + ", ".join(f"{k}={v}" for k, v in sorted(counts.items())))
         print(f"Reports: {args.out}, {html_path}")

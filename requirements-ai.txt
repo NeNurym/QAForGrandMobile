@@ -1,0 +1,5 @@
+# Optional local translation. Core checker and HTML need only Python's standard library.
+transformers==4.57.6
+huggingface-hub==0.36.2
+sentencepiece==0.2.2
+torch>=2.2,<3
